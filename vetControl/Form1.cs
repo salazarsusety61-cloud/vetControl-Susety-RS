@@ -4,123 +4,120 @@ using System.Windows.Forms;
 
 namespace vetControl
 {
+    /// <summary>
+    /// Formulario principal del sistema VetControl
+    /// Permite registrar mascotas y calcular costos de servicios veterinarios
+    /// </summary>
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// Constructor del formulario
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
         }
 
         /// <summary>
-        /// Valida que todos los campos estén correctos
-        /// Muestra ícono de error junto al campo que falla
+        /// Valida que todos los campos del formulario estén correctos
+        /// Muestra ícono de error junto a cada campo que no cumple con el requisito
         /// </summary>
+        /// <returns>true si todos los campos son válidos, false si hay errores</returns>
         private bool ValidarCampos()
         {
             errorProvider1.Clear();
-            bool esValido = true;
+            bool valido = true;
 
-            // Validar Nombre
+            // Validar que el nombre no esté vacío
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
-                errorProvider1.SetError(txtNombre, "Escribe el nombre de la mascota");
-                txtNombre.Focus();
-                esValido = false;
+                errorProvider1.SetError(txtNombre, "Escriba el nombre de la mascota.");
+                valido = false;
             }
 
-            // Validar Especie
+            // Validar que la especie no esté vacía
             if (string.IsNullOrWhiteSpace(txtEspecie.Text))
             {
-                errorProvider1.SetError(txtEspecie, "Escribe la especie");
-                if (esValido) txtEspecie.Focus();
-                esValido = false;
+                errorProvider1.SetError(txtEspecie, "Escriba la especie.");
+                valido = false;
             }
 
-            // Validar Edad
+            // Validar que la edad sea un número entero entre 0 y 30
             if (!int.TryParse(txtEdad.Text, out int edad) || edad < 0 || edad > 30)
             {
-                errorProvider1.SetError(txtEdad, "La edad debe ser un número entre 0 y 30");
-                if (esValido) txtEdad.Focus();
-                esValido = false;
+                errorProvider1.SetError(txtEdad, "La edad debe ser un número entero entre 0 y 30.");
+                valido = false;
             }
 
-            // Validar Peso
-            string textoPeso = txtPeso.Text.Replace('.', ',');
-            if (!double.TryParse(textoPeso, out double peso) || peso <= 0)
+            // Validar que el peso sea un número mayor a 0
+            if (!double.TryParse(txtPeso.Text, out double peso) || peso <= 0)
             {
-                errorProvider1.SetError(txtPeso, "El peso debe ser mayor a 0");
-                if (esValido) txtPeso.Focus();
-                esValido = false;
+                errorProvider1.SetError(txtPeso, "El peso debe ser un número mayor que 0.");
+                valido = false;
             }
 
-            // Validar Sexo
+            // Validar que el sexo sea M, m, H o h
             if (txtSexo.Text != "M" && txtSexo.Text != "m" &&
                 txtSexo.Text != "H" && txtSexo.Text != "h")
             {
-                errorProvider1.SetError(txtSexo, "Escribe M para Macho o H para Hembra");
-                if (esValido) txtSexo.Focus();
-                esValido = false;
+                errorProvider1.SetError(txtSexo, "El sexo debe ser M o H.");
+                valido = false;
             }
 
-            // Validar Servicio
+            // Validar que se haya seleccionado un servicio
             if (lstServicios.SelectedItem == null)
             {
-                errorProvider1.SetError(lstServicios, "Selecciona un servicio de la lista");
-                if (esValido) lstServicios.Focus();
-                esValido = false;
+                errorProvider1.SetError(lstServicios, "Seleccione un servicio.");
+                valido = false;
             }
 
-            return esValido;
+            return valido;
         }
 
         /// <summary>
         /// Evento que se ejecuta al presionar el botón Agregar
-        /// Crea un objeto Mascota y muestra los resultados
+        /// Crea un objeto Mascota, asigna sus propiedades y muestra los resultados
+        /// Todos los cálculos se realizan mediante los métodos del objeto
         /// </summary>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            // Primero validamos todos los campos
+            // Ejecutar validación antes de registrar
             if (!ValidarCampos())
                 return;
 
-            // Leemos los valores de los campos
-            int edad = int.Parse(txtEdad.Text);
-            double peso = double.Parse(txtPeso.Text.Replace('.', ','));
-            char sexo = char.ToUpper(txtSexo.Text[0]);
-            string servicio = lstServicios.SelectedItem.ToString();
+            // Crear el objeto Mascota con los datos del formulario
+            Mascota mascota = new Mascota();
+            mascota.Nombre = txtNombre.Text.Trim();
+            mascota.Especie = txtEspecie.Text.Trim();
+            mascota.Edad = int.Parse(txtEdad.Text);
+            mascota.Peso = double.Parse(txtPeso.Text.Replace('.', ','));
+            mascota.Sexo = char.ToUpper(txtSexo.Text[0]);
+            mascota.Servicio = lstServicios.SelectedItem.ToString();
 
-            // Creamos el objeto Mascota
-            Mascota mascota = new Mascota(
-                txtNombre.Text.Trim(),
-                txtEspecie.Text.Trim(),
-                edad,
-                peso,
-                sexo,
-                servicio
-            );
-
-            // Mostramos resultados usando ÚNICAMENTE los métodos del objeto
+            // Obtener y mostrar resultados usando los métodos del objeto
             lblEtapa.Text = mascota.ObtenerEtapa();
             lblEtapa.BackColor = mascota.ObtenerEtapa() == "Cachorro" ? Color.LightGreen :
                                   mascota.ObtenerEtapa() == "Adulto" ? Color.LightSkyBlue : Color.Khaki;
 
             lblEdadMeses.Text = mascota.CalcularEdadEnMeses().ToString();
 
-            lblDesglose.Text = $"Costo base: ₡{mascota.CalcularCostoBase():N0}\n" +
+            lblDesglose.Text = $"Costo base: ₡{mascota.ObtenerCostoBase():N0}\n" +
                                $"Descuento: ₡{mascota.CalcularDescuento():N0}\n" +
-                               $"Subtotal: ₡{mascota.CalcularSubtotal():N0}\n" +
+                               $"Subtotal: ₡{(mascota.ObtenerCostoBase() - mascota.CalcularDescuento()):N0}\n" +
                                $"Impuesto 13%: ₡{mascota.CalcularImpuesto():N0}\n" +
-                               $"TOTAL A PAGAR: ₡{mascota.CalcularTotal():N0}";
+                               $"TOTAL: ₡{mascota.CalcularTotal():N0}";
 
             lstMascotas.Items.Add(mascota.ObtenerResumen());
-            lblTotal.Text = $"Mascotas registradas: {lstMascotas.Items.Count}";
+            lblTotal.Text = $"Mascotas: {lstMascotas.Items.Count}";
 
-            // Limpiamos los campos para un nuevo ingreso
+            MessageBox.Show("Mascota registrada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Limpiar los campos después de registrar
             LimpiarCampos();
         }
 
         /// <summary>
-        /// Limpia todos los campos del formulario
+        /// Limpia todos los campos del formulario y borra los mensajes de error
         /// </summary>
         private void LimpiarCampos()
         {
@@ -135,23 +132,42 @@ namespace vetControl
         }
 
         /// <summary>
-        /// Solo permite números y tecla de borrar en el campo Edad
+        /// Controla la entrada de teclado en el campo Edad
+        /// Solo permite el ingreso de dígitos
         /// </summary>
         private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
         }
 
         /// <summary>
+        /// Limpia los campos del formulario al presionar el botón Limpiar
+        /// </summary>
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Desea limpiar todos los campos?", "Confirmación",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                LimpiarCampos();
+            }
+        }
+
+        /// <summary>
         /// Limpia toda la lista de mascotas registradas
         /// </summary>
-        private void limpiarListaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LimpiarListaToolStripMenuItem_Click(object sender, EventArgs e)
+
         {
-            lstMascotas.Items.Clear();
-            lblTotal.Text = "Mascotas registradas: 0";
+            if (MessageBox.Show("¿Desea limpiar toda la lista de mascotas?", "Confirmación",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                lstMascotas.Items.Clear();
+                lblTotal.Text = "Mascotas: 0";
+                errorProvider1.Clear();
+            }
         }
 
         /// <summary>
@@ -161,17 +177,21 @@ namespace vetControl
         {
             if (lstMascotas.SelectedIndex >= 0)
             {
-                lstMascotas.Items.RemoveAt(lstMascotas.SelectedIndex);
-                lblTotal.Text = $"Mascotas registradas: {lstMascotas.Items.Count}";
+                if (MessageBox.Show("¿Desea eliminar la mascota seleccionada?", "Confirmación",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    lstMascotas.Items.RemoveAt(lstMascotas.SelectedIndex);
+                    lblTotal.Text = $"Mascotas: {lstMascotas.Items.Count}";
+                }
             }
         }
 
         /// <summary>
-        /// Cierra la aplicación con confirmación
+        /// Cierra la aplicación al presionar el botón Salir
         /// </summary>
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Salir de VetControl?", "Confirmar salida",
+            if (MessageBox.Show("¿Desea salir del sistema?", "Confirmación",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.Close();

@@ -3,33 +3,22 @@
 namespace vetControl
 {
     /// <summary>
-    /// Clase que representa una mascota para el control de servicios veterinarios
+    /// Clase que representa una mascota del sistema VetControl
     /// </summary>
     public class Mascota
     {
-        // Campos privados
-        private string nombre = "";
-        private string especie = "";
+        // Campos privados para las propiedades completas
         private int edad;
         private double peso;
-        private char sexo;
-        private string servicio = "";
 
-        // Propiedades públicas con validación
-        public string Nombre
-        {
-            get { return nombre; }
-            set { nombre = value; }
-        }
-
-        public string Especie
-        {
-            get { return especie; }
-            set { especie = value; }
-        }
+        // Propiedades automáticas públicas
+        public string Nombre { get; set; } = "";
+        public string Especie { get; set; } = "";
+        public char Sexo { get; set; }
+        public string Servicio { get; set; } = "";
 
         /// <summary>
-        /// Edad en años, solo acepta valores entre 0 y 30
+        /// Propiedad Edad con validación: 0 a 30 años
         /// </summary>
         public int Edad
         {
@@ -42,7 +31,7 @@ namespace vetControl
         }
 
         /// <summary>
-        /// Peso en kilogramos, solo acepta valores mayores a 0
+        /// Propiedad Peso con validación: mayor a 0
         /// </summary>
         public double Peso
         {
@@ -54,54 +43,34 @@ namespace vetControl
             }
         }
 
-        public char Sexo
-        {
-            get { return sexo; }
-            set { sexo = value; }
-        }
-
-        public string Servicio
-        {
-            get { return servicio; }
-            set { servicio = value; }
-        }
-
-        // Constructor
-        public Mascota(string nombre, string especie, int edad, double peso, char sexo, string servicio)
-        {
-            Nombre = nombre;
-            Especie = especie;
-            Edad = edad;
-            Peso = peso;
-            Sexo = sexo;
-            Servicio = servicio;
-        }
-
         /// <summary>
-        /// Calcula la edad de la mascota en meses
+        /// Calcula la edad en meses
         /// </summary>
-        /// <returns>Edad multiplicada por 12</returns>
+        /// <returns>Años × 12</returns>
         public int CalcularEdadEnMeses()
         {
             return Edad * 12;
         }
 
         /// <summary>
-        /// Determina la etapa de vida de la mascota
-        /// Cachorro: 0 años, Adulto: 1 a 7 años, Senior: 8 años o más
+        /// Determina la etapa de vida
+        /// Cachorro: menor a 1 año | Adulto: 1 a 7 años | Senior: 8 años o más
         /// </summary>
+        /// <returns>Nombre de la etapa</returns>
         public string ObtenerEtapa()
         {
-            if (Edad == 0)
+            if (Edad < 1)
                 return "Cachorro";
-            if (Edad < 8)
+            else if (Edad <= 7)
                 return "Adulto";
-            return "Senior";
+            else
+                return "Senior";
         }
 
         /// <summary>
-        /// Devuelve el nombre completo del sexo
+        /// Convierte el carácter del sexo a texto completo
         /// </summary>
+        /// <returns>"Macho", "Hembra" o "Desconocido"</returns>
         public string ObtenerSexoCompleto()
         {
             switch (Sexo)
@@ -118,9 +87,10 @@ namespace vetControl
         }
 
         /// <summary>
-        /// Devuelve el costo base según el servicio seleccionado
+        /// Devuelve el monto base según el servicio seleccionado
         /// </summary>
-        public decimal CalcularCostoBase()
+        /// <returns>Valor en colones</returns>
+        public decimal ObtenerCostoBase()
         {
             switch (Servicio)
             {
@@ -133,42 +103,41 @@ namespace vetControl
         }
 
         /// <summary>
-        /// Calcula el descuento: 10% para Senior, 0 para los demás
+        /// Calcula el descuento: 10% para Cachorros y Senior
         /// </summary>
+        /// <returns>Monto del descuento</returns>
         public decimal CalcularDescuento()
         {
-            if (ObtenerEtapa() == "Senior")
-                return CalcularCostoBase() * 0.10m;
+            string etapa = ObtenerEtapa();
+            if (etapa == "Cachorro" || etapa == "Senior")
+                return ObtenerCostoBase() * 0.10m;
             return 0m;
         }
 
         /// <summary>
-        /// Calcula el subtotal: costo base menos descuento
+        /// Calcula impuesto del 13% sobre el subtotal
         /// </summary>
-        public decimal CalcularSubtotal()
-        {
-            return CalcularCostoBase() - CalcularDescuento();
-        }
-
-        /// <summary>
-        /// Calcula el impuesto del 13% sobre el subtotal
-        /// </summary>
+        /// <returns>Monto del impuesto</returns>
         public decimal CalcularImpuesto()
         {
-            return CalcularSubtotal() * 0.13m;
+            decimal subtotal = ObtenerCostoBase() - CalcularDescuento();
+            return subtotal * 0.13m;
         }
 
         /// <summary>
         /// Calcula el total a pagar con impuestos incluidos
         /// </summary>
+        /// <returns>Monto final</returns>
         public decimal CalcularTotal()
         {
-            return CalcularSubtotal() + CalcularImpuesto();
+            decimal subtotal = ObtenerCostoBase() - CalcularDescuento();
+            return subtotal + CalcularImpuesto();
         }
 
         /// <summary>
-        /// Arma el texto resumido con los datos de la mascota
+        /// Genera un resumen formateado con todos los datos de la mascota
         /// </summary>
+        /// <returns>Cadena lista para mostrar</returns>
         public string ObtenerResumen()
         {
             return $"{Nombre} ({ObtenerSexoCompleto()}) - {Especie} - {ObtenerEtapa()} - {Servicio} - ₡{CalcularTotal():N0}";
