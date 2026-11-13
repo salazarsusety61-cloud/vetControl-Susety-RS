@@ -13,26 +13,11 @@
             base.Dispose(disposing);
         }
 
-        #region Código generado por el Diseñador
+        #region Código generado por el Diseñador de Windows Forms
 
         private void InitializeComponent()
         {
-            txtNombre = new TextBox();
-            txtEspecie = new TextBox();
-            txtEdad = new TextBox();
-            txtPeso = new TextBox();
-            txtSexo = new TextBox();
-            lstServicios = new ListBox();
-            lstMascotas = new ListBox();
-            lblMensaje = new Label();
-            lblMeses = new Label();
-            lblCosto = new Label();
-            lblTotal = new Label();
-            btnAgregar = new Button();
-            btnLimpiar = new Button();
-            btnSalir = new Button();
-            btnColor = new Button();
-            colorDialog1 = new ColorDialog();
+            components = new System.ComponentModel.Container();
             menuStrip1 = new MenuStrip();
             opcionesToolStripMenuItem = new ToolStripMenuItem();
             limpiarListaToolStripMenuItem = new ToolStripMenuItem();
@@ -43,143 +28,24 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
+            txtNombre = new TextBox();
+            txtEspecie = new TextBox();
+            txtEdad = new TextBox();
+            txtPeso = new TextBox();
+            txtSexo = new TextBox();
+            lstServicios = new ListBox();
+            btnAgregar = new Button();
+            btnLimpiar = new Button();
             lblEtapa = new Label();
+            lblEdadMeses = new Label();
+            lblDesglose = new Label();
+            lstMascotas = new ListBox();
+            lblTotal = new Label();
+            errorProvider1 = new ErrorProvider(components);
+            colorDialog1 = new ColorDialog();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
-            // 
-            // txtNombre
-            // 
-            txtNombre.Location = new Point(114, 37);
-            txtNombre.Margin = new Padding(3, 4, 3, 4);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(228, 27);
-            txtNombre.TabIndex = 7;
-            // 
-            // txtEspecie
-            // 
-            txtEspecie.Location = new Point(114, 77);
-            txtEspecie.Margin = new Padding(3, 4, 3, 4);
-            txtEspecie.Name = "txtEspecie";
-            txtEspecie.Size = new Size(228, 27);
-            txtEspecie.TabIndex = 8;
-            // 
-            // txtEdad
-            // 
-            txtEdad.Location = new Point(114, 117);
-            txtEdad.Margin = new Padding(3, 4, 3, 4);
-            txtEdad.Name = "txtEdad";
-            txtEdad.Size = new Size(114, 27);
-            txtEdad.TabIndex = 9;
-            // 
-            // txtPeso
-            // 
-            txtPeso.Location = new Point(114, 157);
-            txtPeso.Margin = new Padding(3, 4, 3, 4);
-            txtPeso.Name = "txtPeso";
-            txtPeso.Size = new Size(114, 27);
-            txtPeso.TabIndex = 10;
-            // 
-            // txtSexo
-            // 
-            txtSexo.Location = new Point(114, 197);
-            txtSexo.Margin = new Padding(3, 4, 3, 4);
-            txtSexo.Name = "txtSexo";
-            txtSexo.Size = new Size(68, 27);
-            txtSexo.TabIndex = 11;
-            // 
-            // lstServicios
-            // 
-            lstServicios.FormattingEnabled = true;
-            lstServicios.Items.AddRange(new object[] { "Consulta general", "Vacunación", "Desparasitación", "Baño" });
-            lstServicios.Location = new Point(93, 232);
-            lstServicios.Margin = new Padding(3, 4, 3, 4);
-            lstServicios.Name = "lstServicios";
-            lstServicios.Size = new Size(228, 84);
-            lstServicios.TabIndex = 12;
-            // 
-            // lstMascotas
-            // 
-            lstMascotas.FormattingEnabled = true;
-            lstMascotas.Location = new Point(0, 577);
-            lstMascotas.Margin = new Padding(3, 4, 3, 4);
-            lstMascotas.Name = "lstMascotas";
-            lstMascotas.Size = new Size(378, 84);
-            lstMascotas.TabIndex = 17;
-            // 
-            // lblMensaje
-            // 
-            lblMensaje.AutoSize = true;
-            lblMensaje.Location = new Point(23, 689);
-            lblMensaje.Name = "lblMensaje";
-            lblMensaje.Size = new Size(0, 20);
-            lblMensaje.TabIndex = 18;
-            // 
-            // lblMeses
-            // 
-            lblMeses.Location = new Point(263, 536);
-            lblMeses.Name = "lblMeses";
-            lblMeses.Size = new Size(200, 25);
-            lblMeses.TabIndex = 20;
-            lblMeses.Text = "Edad en meses:";
-            // 
-            // lblCosto
-            // 
-            lblCosto.Location = new Point(263, 415);
-            lblCosto.Name = "lblCosto";
-            lblCosto.Size = new Size(300, 100);
-            lblCosto.TabIndex = 21;
-            lblCosto.Text = "Desglose de costo:";
-            // 
-            // lblTotal
-            // 
-            lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(1, 669);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(86, 20);
-            lblTotal.TabIndex = 22;
-            lblTotal.Text = "Mascotas: 0";
-            lblTotal.Click += lblTotal_Click;
-            // 
-            // btnAgregar
-            // 
-            btnAgregar.Location = new Point(23, 347);
-            btnAgregar.Margin = new Padding(3, 4, 3, 4);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(103, 40);
-            btnAgregar.TabIndex = 13;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.Click += btnAgregar_Click;
-            // 
-            // btnLimpiar
-            // 
-            btnLimpiar.Location = new Point(145, 350);
-            btnLimpiar.Margin = new Padding(3, 4, 3, 4);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(103, 40);
-            btnLimpiar.TabIndex = 14;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.Click += btnLimpiar_Click;
-            // 
-            // btnSalir
-            // 
-            btnSalir.Location = new Point(366, 347);
-            btnSalir.Margin = new Padding(3, 4, 3, 4);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(103, 40);
-            btnSalir.TabIndex = 16;
-            btnSalir.Text = "Salir";
-            btnSalir.Click += btnSalir_Click;
-            // 
-            // btnColor
-            // 
-            btnColor.Location = new Point(251, 347);
-            btnColor.Margin = new Padding(3, 4, 3, 4);
-            btnColor.Name = "btnColor";
-            btnColor.Size = new Size(103, 40);
-            btnColor.TabIndex = 15;
-            btnColor.Text = "Color";
-            btnColor.Click += btnColor_Click;
             // 
             // menuStrip1
             // 
@@ -187,9 +53,10 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { opcionesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(594, 30);
-            menuStrip1.TabIndex = 23;
+            menuStrip1.Padding = new Padding(8, 3, 0, 3);
+            menuStrip1.Size = new Size(773, 30);
+            menuStrip1.TabIndex = 0;
+            menuStrip1.Text = "menuStrip1";
             // 
             // opcionesToolStripMenuItem
             // 
@@ -210,140 +77,239 @@
             eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
             eliminarToolStripMenuItem.Size = new Size(236, 26);
             eliminarToolStripMenuItem.Text = "Eliminar seleccionada";
-            eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
+            eliminarToolStripMenuItem.Click += EliminarToolStripMenuItem_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(23, 40);
+            label1.Location = new Point(27, 62);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(67, 20);
-            label1.TabIndex = 0;
+            label1.TabIndex = 18;
             label1.Text = "Nombre:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(23, 80);
+            label2.Location = new Point(27, 108);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(62, 20);
-            label2.TabIndex = 1;
+            label2.TabIndex = 17;
             label2.Text = "Especie:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(23, 120);
+            label3.Location = new Point(27, 154);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(46, 20);
-            label3.TabIndex = 2;
+            label3.TabIndex = 16;
             label3.Text = "Edad:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(23, 160);
+            label4.Location = new Point(27, 200);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(42, 20);
-            label4.TabIndex = 3;
+            label4.TabIndex = 15;
             label4.Text = "Peso:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(23, 200);
+            label5.Location = new Point(27, 246);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(88, 20);
-            label5.TabIndex = 4;
-            label5.Text = "Sexo (M/H):";
+            label5.Size = new Size(44, 20);
+            label5.TabIndex = 14;
+            label5.Text = "Sexo:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(23, 240);
+            label6.Location = new Point(27, 292);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(64, 20);
-            label6.TabIndex = 5;
+            label6.TabIndex = 13;
             label6.Text = "Servicio:";
             // 
-            // label7
+            // txtNombre
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(12, 541);
-            label7.Name = "label7";
-            label7.Size = new Size(74, 20);
-            label7.TabIndex = 6;
-            label7.Text = "Mascotas:";
-            label7.Click += label7_Click;
+            txtNombre.Location = new Point(120, 57);
+            txtNombre.Margin = new Padding(4, 5, 4, 5);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(239, 27);
+            txtNombre.TabIndex = 1;
+            // 
+            // txtEspecie
+            // 
+            txtEspecie.Location = new Point(120, 103);
+            txtEspecie.Margin = new Padding(4, 5, 4, 5);
+            txtEspecie.Name = "txtEspecie";
+            txtEspecie.Size = new Size(239, 27);
+            txtEspecie.TabIndex = 2;
+            // 
+            // txtEdad
+            // 
+            txtEdad.Location = new Point(120, 149);
+            txtEdad.Margin = new Padding(4, 5, 4, 5);
+            txtEdad.Name = "txtEdad";
+            txtEdad.Size = new Size(79, 27);
+            txtEdad.TabIndex = 3;
+            txtEdad.KeyPress += txtEdad_KeyPress;
+            // 
+            // txtPeso
+            // 
+            txtPeso.Location = new Point(120, 195);
+            txtPeso.Margin = new Padding(4, 5, 4, 5);
+            txtPeso.Name = "txtPeso";
+            txtPeso.Size = new Size(79, 27);
+            txtPeso.TabIndex = 4;
+            // 
+            // txtSexo
+            // 
+            txtSexo.Location = new Point(120, 242);
+            txtSexo.Margin = new Padding(4, 5, 4, 5);
+            txtSexo.Name = "txtSexo";
+            txtSexo.Size = new Size(79, 27);
+            txtSexo.TabIndex = 5;
+            // 
+            // lstServicios
+            // 
+            lstServicios.FormattingEnabled = true;
+            lstServicios.Items.AddRange(new object[] { "Consulta general", "Vacunación", "Desparasitación", "Baño" });
+            lstServicios.Location = new Point(120, 292);
+            lstServicios.Margin = new Padding(4, 5, 4, 5);
+            lstServicios.Name = "lstServicios";
+            lstServicios.Size = new Size(239, 84);
+            lstServicios.TabIndex = 6;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(31, 415);
+            btnAgregar.Margin = new Padding(4, 5, 4, 5);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(133, 46);
+            btnAgregar.TabIndex = 7;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.Location = new Point(187, 415);
+            btnLimpiar.Margin = new Padding(4, 5, 4, 5);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(133, 46);
+            btnLimpiar.TabIndex = 8;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = true;
             // 
             // lblEtapa
             // 
+            lblEtapa.BackColor = Color.Transparent;
             lblEtapa.BorderStyle = BorderStyle.FixedSingle;
-            lblEtapa.Location = new Point(23, 465);
+            lblEtapa.Location = new Point(400, 62);
+            lblEtapa.Margin = new Padding(4, 0, 4, 0);
             lblEtapa.Name = "lblEtapa";
-            lblEtapa.Size = new Size(180, 50);
-            lblEtapa.TabIndex = 24;
-            lblEtapa.Text = "Etapa:";
+            lblEtapa.Size = new Size(319, 45);
+            lblEtapa.TabIndex = 9;
+            lblEtapa.Text = "Etapa";
             lblEtapa.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblEdadMeses
+            // 
+            lblEdadMeses.AutoSize = true;
+            lblEdadMeses.Location = new Point(400, 138);
+            lblEdadMeses.Margin = new Padding(4, 0, 4, 0);
+            lblEdadMeses.Name = "lblEdadMeses";
+            lblEdadMeses.Size = new Size(123, 20);
+            lblEdadMeses.TabIndex = 12;
+            lblEdadMeses.Text = "Edad en meses: 0";
+            // 
+            // lblDesglose
+            // 
+            lblDesglose.AutoSize = true;
+            lblDesglose.Location = new Point(400, 185);
+            lblDesglose.Margin = new Padding(4, 0, 4, 0);
+            lblDesglose.Name = "lblDesglose";
+            lblDesglose.Size = new Size(134, 20);
+            lblDesglose.TabIndex = 11;
+            lblDesglose.Text = "Desglose de costo:";
+            // 
+            // lstMascotas
+            // 
+            lstMascotas.FormattingEnabled = true;
+            lstMascotas.Location = new Point(400, 308);
+            lstMascotas.Margin = new Padding(4, 5, 4, 5);
+            lstMascotas.Name = "lstMascotas";
+            lstMascotas.Size = new Size(319, 144);
+            lstMascotas.TabIndex = 10;
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new Point(400, 477);
+            lblTotal.Margin = new Padding(4, 0, 4, 0);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(86, 20);
+            lblTotal.TabIndex = 0;
+            lblTotal.Text = "Mascotas: 0";
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(594, 707);
-            Controls.Add(lblEtapa);
-            Controls.Add(label1);
-            Controls.Add(label2);
-            Controls.Add(label3);
-            Controls.Add(label4);
-            Controls.Add(label5);
-            Controls.Add(label6);
-            Controls.Add(label7);
-            Controls.Add(txtNombre);
-            Controls.Add(txtEspecie);
-            Controls.Add(txtEdad);
-            Controls.Add(txtPeso);
-            Controls.Add(txtSexo);
-            Controls.Add(lstServicios);
-            Controls.Add(btnAgregar);
-            Controls.Add(btnLimpiar);
-            Controls.Add(btnColor);
-            Controls.Add(btnSalir);
-            Controls.Add(lstMascotas);
-            Controls.Add(lblMensaje);
-            Controls.Add(lblMeses);
-            Controls.Add(lblCosto);
+            ClientSize = new Size(773, 538);
             Controls.Add(lblTotal);
+            Controls.Add(lstMascotas);
+            Controls.Add(lblDesglose);
+            Controls.Add(lblEdadMeses);
+            Controls.Add(lblEtapa);
+            Controls.Add(btnLimpiar);
+            Controls.Add(btnAgregar);
+            Controls.Add(lstServicios);
+            Controls.Add(txtSexo);
+            Controls.Add(txtPeso);
+            Controls.Add(txtEdad);
+            Controls.Add(txtEspecie);
+            Controls.Add(txtNombre);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(3, 4, 3, 4);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "Form1";
-            Text = "VetControl";
+            Text = "VetControl - Registro de Mascotas";
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
+        private void limpiarListaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtEspecie;
-        private System.Windows.Forms.TextBox txtEdad;
-        private System.Windows.Forms.TextBox txtPeso;
-        private System.Windows.Forms.TextBox txtSexo;
-        private System.Windows.Forms.ListBox lstServicios;
-        private System.Windows.Forms.ListBox lstMascotas;
-        private System.Windows.Forms.Label lblMensaje;
-        private System.Windows.Forms.Label lblMeses;
-        private System.Windows.Forms.Label lblCosto;
-        private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnColor;
-        private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem limpiarListaToolStripMenuItem;
@@ -354,7 +320,20 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private Label lblEtapa;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtEspecie;
+        private System.Windows.Forms.TextBox txtEdad;
+        private System.Windows.Forms.TextBox txtPeso;
+        private System.Windows.Forms.TextBox txtSexo;
+        private System.Windows.Forms.ListBox lstServicios;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Label lblEtapa;
+        private System.Windows.Forms.Label lblEdadMeses;
+        private System.Windows.Forms.Label lblDesglose;
+        private System.Windows.Forms.ListBox lstMascotas;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
